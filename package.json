@@ -1,0 +1,16 @@
+{
+  "name": "dia8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "davi_otario",
+  "license": "ISC",
+  "dependencies": {
+    "awesome-dev-jokes": "^1.0.3",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
