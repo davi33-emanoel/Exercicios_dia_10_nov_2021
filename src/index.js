@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 3000
+const middleware = require('./controllers/middlewares')
 const tarefa = require('./controllers/tarefa-controller')
 const usuario = require ('./controllers/usuario-controller')
-const ai= require('./controllers/um_ai-controller')
 
-app.get ('/seila', ai)
-app.get ('/tarefas', tarefa)
-app.get ('/usuario', usuario)
-app.listen(3001, console.log(`servidor rodando na porta 3001, link http://localhost:${port}/`))
+middleware(app)
+tarefa(app)
+usuario(app)
+app.listen(3000, console.log(`servidor rodando na porta 3000, link http://localhost:${port}/`))
