@@ -1,13 +1,27 @@
-const usuario = (app)=>{
+const Usuario = require('../models/Usuario')
+const usuario = (app,bd)=>{
     app.get('/usuario',(req, res)=>{
         res.status(200).json({
-         "itens": "ESTA PERDIDO AMIGO???",
-         "status": "https://www.youtube.com/watch?v=f-d0vzlUCzk"
+         "usuario":bd.usuario
       })})
       app.post("/usuario",(req, res) => {
-        res.status(200).json({
-            "eai": "rota post"
+            const body = req.body
+            try{
+               const novo_usuario = new Usuario(body.nome,body.email,body.senha)
+               bd.usuario.push(novo_usuario)
+
+               res.status(201).json({
+                   "requisicao":novo_usuario,
+                   "error":false
+               })
+            }
+            catch (error){
+                res.status(400).json({
+                    "requisicao":novo_usuario,
+                    "error":true
+                })
+            }
         })
-    })
+    
 }
   module.exports= usuario
